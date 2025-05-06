@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php $this->load->view('_partials/header'); ?>
 <div class="container container-person mt-5 p-5">
     <?=write_message()?>
-    <h1>Produk</h1>
+    <h1>Tambahkan Produk Baru</h1>
     <div class="col-md-12 mb-3">
         <div class="row">
             <a class="btn btn-primary" href="<?= base_url('product/form/') ?>">Produk Baru</a>
@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?= $product->id ?></td>
                     <td><?= $product->nama ?></td>
                     <td><?= $product->stok ?></td>
-                    <td>Rp<?= number_format($product->harga, 2, ',', '.') ?></td>
+                    <td>Rp<?= $product->harga ?></td>
                     <td>
                         <a href="<?= base_url('product/form/'.$product->id) ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
                         <a class="btn btn-sm btn-danger delete-product" href="#" data-id="<?= base_url('product/delete/'.$product->id) ?>" data-toggle="modal" data-target="#deleteProductModal">Delete</a>

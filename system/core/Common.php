@@ -528,7 +528,7 @@ if ( ! function_exists('set_status_header'))
 				409	=> 'Conflict',
 				410	=> 'Gone',
 				411	=> 'Length Required',
-				412	=> 'Precondition Failed',
+				412	=> 'hargandition Failed',
 				413	=> 'Request Entity Too Large',
 				414	=> 'Request-URI Too Long',
 				415	=> 'Unsupported Media Type',
@@ -536,7 +536,7 @@ if ( ! function_exists('set_status_header'))
 				417	=> 'Expectation Failed',
 				422	=> 'Unprocessable Entity',
 				426	=> 'Upgrade Required',
-				428	=> 'Precondition Required',
+				428	=> 'hargandition Required',
 				429	=> 'Too Many Requests',
 				431	=> 'Request Header Fields Too Large',
 

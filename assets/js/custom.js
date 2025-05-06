@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#product_table').DataTable();
     $('#order_table').DataTable();
-    $('#descricao').summernote({
+    $('#deskripsi').summernote({
         toolbar: [
             // [groupName, [list of button]]
             ['style', ['bold', 'italic', 'underline', 'clear']],

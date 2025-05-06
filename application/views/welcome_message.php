@@ -10,11 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php
     $action_form = '/order/save/';
     if(isset($order) && $order){
-        foreach ($order as $ordered);
-        $action_form = $action_form.$ordered->id ?>
-        <h1>Edit Produk: <?= $ordered->id ?></h1>
+        foreach ($order as $pedido);
+        $action_form = $action_form.$pedido->id ?>
+        <h1>Edit Produk: <?= $pedido->id ?></h1>
     <?php } else { ?>
-        <h1>Produk Baru</h1>
+        <h1>Pesanan Baru</h1>
     <?php }
     if($products) { ?>
     <form id="form_make_order" method="post" action="<?=site_url($action_form)?>">
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-sm-4 col-xs-4"><?= $product->nama ?></div>
                     <div class="col-sm-3 col-xs-3"><?= $product->stok ?></div>
-                    <div class="col-sm-3 col-xs-3">Rp<?= number_format($product->harga, 2, ',', '.') ?></div>
+                    <div class="col-sm-3 col-xs-3">Rp <?= $product->harga ?></div>
                     <div class="col-sm-2 col-xs-2"><input type="number" id="product[<?=$product->id?>]" name="product[<?=$product->id?>]" step="1" min="0" max="100"
                                                           onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="0"></div>
                 </div>

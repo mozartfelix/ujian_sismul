@@ -4009,7 +4009,7 @@
 			columnCount = columns.length,
 			features = settings.oFeatures,
 			preSearch = settings.oPreviousSearch,
-			preColSearch = settings.aoPreSearchCols,
+			hargalSearch = settings.aoPreSearchCols,
 			i, data = [], dataProp, column, columnSearch,
 			sort = _fnSortFlatten( settings ),
 			displayStart = settings._iDisplayStart,
@@ -4043,7 +4043,7 @@
 	
 		for ( i=0 ; i<columnCount ; i++ ) {
 			column = columns[i];
-			columnSearch = preColSearch[i];
+			columnSearch = hargalSearch[i];
 			dataProp = typeof column.mData=="function" ? 'function' : column.mData ;
 	
 			d.columns.push( {

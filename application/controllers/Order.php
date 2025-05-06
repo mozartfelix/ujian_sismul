@@ -20,7 +20,7 @@ class Order extends CI_Controller {
         $data = array();
         $data['products'] = $this->product->getProductsByOrderId($id);
         if(!$id || !$data['products']){
-            $this->session->set_flashdata('message', array('danger','Pesanan tidak ditemukan!'));
+            $this->session->set_flashdata('mensagem', array('danger','Pesanan tidak ditemukan!'));
             redirect('/');
         }
         $order_price = 0;
@@ -71,12 +71,12 @@ class Order extends CI_Controller {
         }
 
         if($send_form){
-            $this->session->set_flashdata('message', array('success','Pesanan berhasil dibuat!'));
+            $this->session->set_flashdata('mensagem', array('success','Pesanan berhasil dibuat!'));
             redirect('');
         }
         else
         {
-            $this->session->set_flashdata('message', array('danger','Pilih setidaknya satu produk!'));
+            $this->session->set_flashdata('mensagem', array('danger','Pilih setidaknya satu produk!'));
             redirect('');
         }
     }
@@ -85,12 +85,12 @@ class Order extends CI_Controller {
     {
         $delete = $this->order->deleteOrder($id);
         if($delete){
-            $this->session->set_flashdata('message', array('success','Pesanan berhasil dihapus!'));
+            $this->session->set_flashdata('mensagem', array('success','Pesanan berhasil dihapus!'));
             redirect('order');
         }
         else
         {
-            $this->session->set_flashdata('message', array('danger','Ups! Pesanan tidak ditemukan!'));
+            $this->session->set_flashdata('mensagem', array('danger','Ups! Pesanan tidak ditemukan!'));
             redirect('order');
         }
     }
