@@ -42,6 +42,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi"><?= (isset($produk) ? htmlspecialchars($produk->deskripsi) : '') ?></textarea>
             </div>
         </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="gambar">Upload Gambar</label>
+                <input type="file" class="form-control-file" id="gambar" name="gambar">
+                <?php if (isset($produk) && !empty($produk->gambar)) : ?>
+                    <p>Gambar saat ini:</p>
+                    <img src="<?= base_url('uploads/'.$produk->gambar) ?>" alt="Gambar Produk" class="img-thumbnail" style="max-width:150px;">
+                <?php endif; ?>
+            </div>
+        </div>
         <button class="btn btn-primary" type="submit">Kirim</button>
         <?= (isset($produk) ? '<a href="#" data-id="'.base_url('product/delete/'.$produk->id).'" class="btn btn-danger delete-product" data-toggle="modal" data-target="#deleteProductModal">Hapus</a>' : '') ?>
     </form>

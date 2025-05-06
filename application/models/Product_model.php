@@ -11,7 +11,7 @@ class Product_model extends CI_Model {
     public function getProductsByOrderId($id){
         $this->db->join('product_order', 'product_order.product_id = product.id');
         $this->db->join('order', 'product_order.order_id = order.id');
-        $this->db->select('product.nama, product.stok, product.harga, product_order.product_qtd');
+        $this->db->select('product.nama, product.stok, product.harga, product.gambar, product_order.product_qtd');
         $this->db->order_by('product.id');
         $this->db->where('product_order.order_id', $id);
         $this->db->where('order.status', 1);
@@ -34,12 +34,13 @@ class Product_model extends CI_Model {
     public function updateProduct($form_data){
         $this->db->where('id', $form_data['id']);
         $this->db->update('product', $form_data);
-        return ($this->db->affected_rows() != 1) ? false : true;
+        return ($this->db->affected_rows() < 0) ? false : true;
     }
 
     public function deleteProduct($id){
         $this->db->set('status', 0);
         $this->db->where('id', $id);
+        return $this->db->delete('product');
         $this->db->where('status', 1);
         $this->db->update('product');
         return ($this->db->affected_rows() != 1) ? false : true;

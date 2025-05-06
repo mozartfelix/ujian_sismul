@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table id="order_table" class="table table-striped table-bordered table-responsive-sm" style="width:100%">
         <thead>
         <tr>
+            <th>Gambar</th>
             <th>Nama</th>
             <th>Stok</th>
             <th>Harga</th>
@@ -22,13 +23,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php if($products) { ?>
             <?php foreach ($products as $product) { ?>
                 <tr>
+                    <td>
+                        <?php if (!empty($product->gambar)) { ?>
+                            <img src="<?= base_url('uploads/' . $product->gambar) ?>" alt="<?= $product->nama ?>" width="80">
+                        <?php } else { ?>
+                            <span class="text-muted">Tidak ada gambar</span>
+                        <?php } ?>
+                    </td>
                     <td><?= $product->nama ?></td>
                     <td><?= $product->stok ?></td>
                     <td>Rp<?= number_format($product->harga, 2, ',', '.') ?></td>
                     <td><?= $product->product_qtd ?></td>
                 </tr>
-            <?php }
-        } else { ?>
+            <?php } ?>
+        <?php } else { ?>
             <td class="text-center" colspan="4">Tidak ada produk dalam pesanan ini</td>
         <?php } ?>
         </tbody>

@@ -18,31 +18,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php }
     if($products) { ?>
     <form id="form_make_order" method="post" action="<?=site_url($action_form)?>">
+        <div class="container mb-3">
+            <div class="row font-weight-bold">
+                <div class="col-sm-2 col-xs-2">Gambar</div>
+                <div class="col-sm-2 col-xs-2">Nama</div>
+                <div class="col-sm-2 col-xs-2">Stok</div>
+                <div class="col-sm-2 col-xs-2">Harga</div>
+                <div class="col-sm-2 col-xs-2">Jumlah</div>
+            </div>
+        </div>
+
         <?php foreach ($products as $product) { ?>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 col-xs-4"><b>Nama</b></div>
-                    <div class="col-sm-3 col-xs-3"><b>Stok</b></div>
-                    <div class="col-sm-3 col-xs-3"><b>Harga</b></div>
-                    <div class="col-sm-2 col-xs-2"><b>Jumlah</b></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-xs-4"><?= $product->nama ?></div>
-                    <div class="col-sm-3 col-xs-3"><?= $product->stok ?></div>
-                    <div class="col-sm-3 col-xs-3">Rp<?= number_format($product->harga, 2, ',', '.') ?></div>
-                    <div class="col-sm-2 col-xs-2"><input type="number" id="product[<?=$product->id?>]" name="product[<?=$product->id?>]" step="1" min="0" max="100"
-                                                          onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="0"></div>
+            <div class="container mb-2">
+                <div class="row align-items-center">
+                    <div class="col-sm-2 col-xs-2">
+                        <?php if (!empty($product->gambar)) { ?>
+                            <img src="<?= base_url('uploads/' . $product->gambar) ?>" alt="Gambar <?= $product->nama ?>" style="max-width: 100px; height: auto;">
+                        <?php } else { ?>
+                            <span>Tidak ada gambar</span>
+                        <?php } ?>
+                    </div>
+                    <div class="col-sm-2 col-xs-2"><?= $product->nama ?></div>
+                    <div class="col-sm-2 col-xs-2"><?= $product->stok ?></div>
+                    <div class="col-sm-2 col-xs-2">Rp<?= number_format($product->harga, 2, ',', '.') ?></div>
+                    <div class="col-sm-2 col-xs-2">
+                        <input type="number" id="product[<?=$product->id?>]" name="product[<?=$product->id?>]" step="1" min="0" max="100"
+                               onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="0" class="form-control">
+                    </div>
                 </div>
             </div>
         <?php } ?>
-        <div class="mt-3">
+
+        <div class="mt-4">
             <button class="btn btn-primary" type="submit">Buat pesanan</button>
         </div>
-        <?php } else { ?>
-            <div class="col-sm-12 col-xs-12">Tidak ada produk</div>
-        <?php } ?>
+    </form>
+    <?php } else { ?>
+        <div class="col-sm-12 col-xs-12">Tidak ada produk</div>
+    <?php } ?>
 </div>
 <?php $this->load->view('_partials/scripts'); ?>
 </body>
-
 </html>

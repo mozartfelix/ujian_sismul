@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>Nama</th>
             <th>Stok</th>
             <th>Harga</th>
+            <th>Gambar Produk</th>
             <th>Aksi</th>
         </tr>
         </thead>
@@ -32,6 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?= $product->nama ?></td>
                     <td><?= $product->stok ?></td>
                     <td>Rp<?= number_format($product->harga, 2, ',', '.') ?></td>
+                    <td>
+                        <?php if (!empty($product->gambar)): ?>
+                            <img src="<?= base_url('uploads/'.$product->gambar) ?>" alt="Gambar Produk" style="max-width:100px;">
+                        <?php else: ?>
+                            <small>Tidak ada gambar</small>
+                        <?php endif; ?>
+                    </td>
                     <td>
                         <a href="<?= base_url('product/form/'.$product->id) ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
                         <a class="btn btn-sm btn-danger delete-product" href="#" data-id="<?= base_url('product/delete/'.$product->id) ?>" data-toggle="modal" data-target="#deleteProductModal">Delete</a>
