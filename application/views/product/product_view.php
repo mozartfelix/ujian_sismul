@@ -7,21 +7,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php $this->load->view('_partials/header'); ?>
 <div class="container container-person mt-5 p-5">
     <?=write_message()?>
-    <h1>Produtos</h1>
+    <h1>Produk</h1>
     <div class="col-md-12 mb-3">
         <div class="row">
-            <a class="btn btn-primary" href="<?= base_url('product/form/') ?>">Novo Produto</a>
+            <a class="btn btn-primary" href="<?= base_url('product/form/') ?>">Produk Baru</a>
         </div>
     </div>
     <table id="product_table" class="table table-striped table-bordered table-responsive-sm" style="width:100%">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Nome</th>
-            <th>SKU</th>
-            <th>Preço</th>
-            <th>Editar</th>
-            <th>Excluir</th>
+            <th>Nama</th>
+            <th>Stok</th>
+            <th>Harga</th>
+            <th>Aksi</th>
         </tr>
         </thead>
         <tbody>
@@ -30,15 +29,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             foreach ($products as $product) { ?>
                 <tr>
                     <td><?= $product->id ?></td>
-                    <td><?= $product->nome ?></td>
-                    <td><?= $product->sku ?></td>
-                    <td>R$<?= $product->preco ?></td>
-                    <td><a href="<?= base_url('product/form/'.$product->id) ?>">Edit</a></td>
-                    <td><a class="delete-product" href="#" data-id="<?= base_url('product/delete/'.$product->id) ?>" data-toggle="modal" data-target="#deleteProductModal">Delete</a></td>
+                    <td><?= $product->nama ?></td>
+                    <td><?= $product->stok ?></td>
+                    <td>Rp<?= $product->harga ?></td>
+                    <td>
+                        <a href="<?= base_url('product/form/'.$product->id) ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
+                        <a class="btn btn-sm btn-danger delete-product" href="#" data-id="<?= base_url('product/delete/'.$product->id) ?>" data-toggle="modal" data-target="#deleteProductModal">Delete</a>
+                    </td>
                 </tr>
             <?php }
         } else { ?>
-            <td class="text-center" colspan="6">Não há produtos</td>
+            <td class="text-center" colspan="6">Tidak ada produk</td>
         <?php } ?>
         </tbody>
     </table>

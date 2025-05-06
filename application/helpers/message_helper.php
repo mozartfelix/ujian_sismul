@@ -2,11 +2,11 @@
 function write_message()
 {
     $CI = & get_instance();
-    $mensagem = $CI->session->flashdata('mensagem');
-    if(is_array($mensagem))
+    $message = $CI->session->flashdata('message');
+    if(is_array($message))
     {
-        echo '<div class="alert alert-'.$mensagem[0].'" role="alert">';
-        echo $mensagem[1];
+        echo '<div class="alert alert-'.$message[0].'" role="alert">';
+        echo $message[1];
         echo '</div>';
     }
 }

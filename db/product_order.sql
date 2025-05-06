@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 06 Bulan Mei 2025 pada 11.44
+-- Waktu pembuatan: 06 Bulan Mei 2025 pada 12.40
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `order_produk`
+-- Database: `product_order`
 --
 
 -- --------------------------------------------------------
@@ -45,7 +45,7 @@ CREATE TABLE `product` (
   `stok` int(10) NOT NULL,
   `nama` varchar(90) NOT NULL,
   `deskripsi` longtext DEFAULT NULL,
-  `harga` decimal(10,2) NOT NULL,
+  `harga` int(11) NOT NULL,
   `status` varchar(45) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

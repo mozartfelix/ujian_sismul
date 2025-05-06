@@ -20,12 +20,12 @@ class Order extends CI_Controller {
         $data = array();
         $data['products'] = $this->product->getProductsByOrderId($id);
         if(!$id || !$data['products']){
-            $this->session->set_flashdata('mensagem', array('danger','Pedido não encontrado!'));
+            $this->session->set_flashdata('message', array('danger','Pesanan tidak ditemukan!'));
             redirect('/');
         }
         $order_price = 0;
         foreach ($data['products'] as $key => $product){
-            $order_price = ($product->preco * $product->product_qtd) + $order_price;
+            $order_price = ($product->harga * $product->product_qtd) + $order_price;
         }
         $data['total'] = $order_price;
         $data['order_id'] = $id;
@@ -39,7 +39,7 @@ class Order extends CI_Controller {
         foreach ($order_products as $key => $product_qtd){
             if($product_qtd){
                 $product = $this->product->getProductById($key);
-                $order_price = ($product[0]->preco * $product_qtd) + $order_price;
+                $order_price = ($product[0]->harga * $product_qtd) + $order_price;
                 $products_ids[] = array
                 (
                     'product_id' => $key,
@@ -71,12 +71,12 @@ class Order extends CI_Controller {
         }
 
         if($send_form){
-            $this->session->set_flashdata('mensagem', array('success','Pedido salvo com sucesso!'));
+            $this->session->set_flashdata('message', array('success','Pesanan berhasil dibuat!'));
             redirect('');
         }
         else
         {
-            $this->session->set_flashdata('mensagem', array('danger','Selecione no mínimo um produto!'));
+            $this->session->set_flashdata('message', array('danger','Pilih setidaknya satu produk!'));
             redirect('');
         }
     }
@@ -85,12 +85,12 @@ class Order extends CI_Controller {
     {
         $delete = $this->order->deleteOrder($id);
         if($delete){
-            $this->session->set_flashdata('mensagem', array('success','Pedido deletado com sucesso!'));
+            $this->session->set_flashdata('message', array('success','Pesanan berhasil dihapus!'));
             redirect('order');
         }
         else
         {
-            $this->session->set_flashdata('mensagem', array('danger','Ops! Pedido não encontrado!'));
+            $this->session->set_flashdata('message', array('danger','Ups! Pesanan tidak ditemukan!'));
             redirect('order');
         }
     }

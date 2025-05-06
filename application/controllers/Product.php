@@ -30,10 +30,10 @@ class Product extends CI_Controller {
         $form_data = array
         (
             'id' => $id,
-            'sku' => $this->input->post('sku'),
-            'nome' => $this->input->post('nome'),
-            'descricao' => $this->input->post('descricao'),
-            'preco' => $this->input->post('preco')
+            'stok' => $this->input->post('stok'),
+            'nama' => $this->input->post('nama'),
+            'deskripsi' => $this->input->post('deskripsi'),
+            'harga' => $this->input->post('harga')
         );
         if(!$id){
             $send_form = $this->product->createProduct($form_data);
@@ -42,12 +42,12 @@ class Product extends CI_Controller {
         }
 
         if($send_form){
-            $this->session->set_flashdata('mensagem', array('success','Produto salvo com sucesso!'));
+            $this->session->set_flashdata('message', array('success','Produk berhasil dibuat!'));
             redirect('product');
         }
         else
         {
-            $this->session->set_flashdata('mensagem', array('danger','Ops! Dados incorretos!'));
+            $this->session->set_flashdata('message', array('danger','Ups! Datanya salah!'));
             redirect('product/form');
         }
     }
@@ -56,12 +56,12 @@ class Product extends CI_Controller {
     {
         $delete = $this->product->deleteProduct($id);
         if($delete){
-            $this->session->set_flashdata('mensagem', array('success','Produto deletado com sucesso!'));
+            $this->session->set_flashdata('message', array('success','Produk berhasil dihapus!'));
             redirect('product');
         }
         else
         {
-            $this->session->set_flashdata('mensagem', array('danger','Ops! Produto não encontrado!'));
+            $this->session->set_flashdata('message', array('danger','Ups! Produk tidak ditemukan!'));
             redirect('product');
         }
     }
