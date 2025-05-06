@@ -575,7 +575,7 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
 		}
 		elseif ( ! $methName = $call->me['struct']['methodName'])
 		{
-			return $this->multicall_error('nomethod');
+			return $this->multicall_error('namathod');
 		}
 
 		list($scalar_value, $scalar_type) = array(reset($methName->me), key($methName->me));

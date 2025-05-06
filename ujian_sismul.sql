@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
+-- version 4.4.14
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Waktu pembuatan: 06 Bulan Mei 2025 pada 13.19
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 5.6.40
+-- Host: 127.0.0.1
+-- Generation Time: May 06, 2025 at 01:40 PM
+-- Server version: 5.6.26
+-- PHP Version: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,98 +17,93 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `product_order`
+-- Database: `ujian_sismul`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order`
+-- Table structure for table `order`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE IF NOT EXISTS `order` (
   `id` int(11) NOT NULL,
   `data` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id`, `data`, `status`) VALUES
-(17, '2025-05-06 17:57:37', 1),
-(18, '2025-05-06 17:58:22', 1),
-(19, '2025-05-06 18:16:48', 0),
-(20, '2025-05-06 18:16:54', 0);
+(19, '2025-05-06 18:10:33', 1),
+(20, '2025-05-06 18:20:28', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `product`
+-- Table structure for table `product`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL,
-  `stok` int(10) NOT NULL,
+  `stok` varchar(45) NOT NULL,
   `nama` varchar(90) NOT NULL,
-  `deskripsi` longtext DEFAULT NULL,
+  `deskripsi` longtext,
   `harga` decimal(10,2) NOT NULL,
   `status` varchar(45) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `stok`, `nama`, `deskripsi`, `harga`, `status`) VALUES
-(20, 15, 'Produk 1', 'Produk 1 - Meja', '100000.00', '1'),
-(21, 30, 'Produk 2', 'Produk 2 - Kursi', '2000000.00', '1'),
-(22, 20, 'Produk 3', 'Produk 3 - Laptop', '10000000.00', '1'),
-(23, 100, 'Produk 4', 'Produk 4 - Keyboard', '300000.00', '1');
+(20, '122', 'Baju', '', '200000.00', '1'),
+(21, '2332', 'celana', '<p>test aja&nbsp;</p>', '100000.00', '1'),
+(22, '2', '232', '', '22.00', '0'),
+(23, '22', 'aweae', 'adadaw', '12.00', '0');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `product_order`
+-- Table structure for table `product_order`
 --
 
-CREATE TABLE `product_order` (
+CREATE TABLE IF NOT EXISTS `product_order` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `product_qtd` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `product_qtd` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `product_order`
+-- Dumping data for table `product_order`
 --
 
 INSERT INTO `product_order` (`id`, `order_id`, `product_id`, `product_qtd`) VALUES
-(20, 17, 20, 1),
-(21, 17, 22, 2),
-(22, 18, 20, 3),
-(23, 18, 21, 1),
-(24, 20, 23, 1);
+(21, 19, 20, 22),
+(22, 19, 21, 32);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `product_order`
+-- Indexes for table `product_order`
 --
 ALTER TABLE `product_order`
   ADD PRIMARY KEY (`id`),
@@ -118,38 +111,34 @@ ALTER TABLE `product_order`
   ADD KEY `product_po_idx` (`product_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `order`
+-- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
--- AUTO_INCREMENT untuk tabel `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
--- AUTO_INCREMENT untuk tabel `product_order`
+-- AUTO_INCREMENT for table `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- Constraints for dumped tables
+--
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `product_order`
+-- Constraints for table `product_order`
 --
 ALTER TABLE `product_order`
   ADD CONSTRAINT `order_po` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `product_po` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
