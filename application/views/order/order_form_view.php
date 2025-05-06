@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <td><?= $product->nama ?></td>
                     <td><?= $product->stok ?></td>
-                    <td>Rp<?= $product->harga ?></td>
+                    <td>Rp<?= number_format($product->harga, 2, ',', '.') ?></td>
                     <td><?= $product->product_qtd ?></td>
                 </tr>
             <?php }
@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     <div class="row">
         <div class="col-sm-12">
-            <h2 class="float-right mt-5">Total - Rp<?= number_format($total, 0, ',', '.') ?></h2>
+            <h2 class="float-right mt-5">Total - Rp<?= number_format($total, 2, ',', '.') ?></h2>
         </div>
     </div>
     <div class="row">

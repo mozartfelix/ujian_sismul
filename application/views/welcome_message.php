@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-sm-4 col-xs-4"><?= $product->nama ?></div>
                     <div class="col-sm-3 col-xs-3"><?= $product->stok ?></div>
-                    <div class="col-sm-3 col-xs-3">Rp <?= $product->harga ?></div>
+                    <div class="col-sm-3 col-xs-3">Rp<?= number_format($product->harga, 2, ',', '.') ?></div>
                     <div class="col-sm-2 col-xs-2"><input type="number" id="product[<?=$product->id?>]" name="product[<?=$product->id?>]" step="1" min="0" max="100"
                                                           onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="0"></div>
                 </div>

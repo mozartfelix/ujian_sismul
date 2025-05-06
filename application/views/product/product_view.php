@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?= $product->id ?></td>
                     <td><?= $product->nama ?></td>
                     <td><?= $product->stok ?></td>
-                    <td>Rp<?= $product->harga ?></td>
+                    <td>Rp<?= number_format($product->harga, 2, ',', '.') ?></td>
                     <td>
                         <a href="<?= base_url('product/form/'.$product->id) ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
                         <a class="btn btn-sm btn-danger delete-product" href="#" data-id="<?= base_url('product/delete/'.$product->id) ?>" data-toggle="modal" data-target="#deleteProductModal">Delete</a>

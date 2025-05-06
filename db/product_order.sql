@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 06 Bulan Mei 2025 pada 12.40
+-- Waktu pembuatan: 06 Bulan Mei 2025 pada 13.19
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -34,6 +34,16 @@ CREATE TABLE `order` (
   `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data untuk tabel `order`
+--
+
+INSERT INTO `order` (`id`, `data`, `status`) VALUES
+(17, '2025-05-06 17:57:37', 1),
+(18, '2025-05-06 17:58:22', 1),
+(19, '2025-05-06 18:16:48', 0),
+(20, '2025-05-06 18:16:54', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -45,9 +55,19 @@ CREATE TABLE `product` (
   `stok` int(10) NOT NULL,
   `nama` varchar(90) NOT NULL,
   `deskripsi` longtext DEFAULT NULL,
-  `harga` int(11) NOT NULL,
+  `harga` decimal(10,2) NOT NULL,
   `status` varchar(45) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data untuk tabel `product`
+--
+
+INSERT INTO `product` (`id`, `stok`, `nama`, `deskripsi`, `harga`, `status`) VALUES
+(20, 15, 'Produk 1', 'Produk 1 - Meja', '100000.00', '1'),
+(21, 30, 'Produk 2', 'Produk 2 - Kursi', '2000000.00', '1'),
+(22, 20, 'Produk 3', 'Produk 3 - Laptop', '10000000.00', '1'),
+(23, 100, 'Produk 4', 'Produk 4 - Keyboard', '300000.00', '1');
 
 -- --------------------------------------------------------
 
@@ -61,6 +81,17 @@ CREATE TABLE `product_order` (
   `product_id` int(11) NOT NULL,
   `product_qtd` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data untuk tabel `product_order`
+--
+
+INSERT INTO `product_order` (`id`, `order_id`, `product_id`, `product_qtd`) VALUES
+(20, 17, 20, 1),
+(21, 17, 22, 2),
+(22, 18, 20, 3),
+(23, 18, 21, 1),
+(24, 20, 23, 1);
 
 --
 -- Indexes for dumped tables
@@ -94,19 +125,19 @@ ALTER TABLE `product_order`
 -- AUTO_INCREMENT untuk tabel `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
